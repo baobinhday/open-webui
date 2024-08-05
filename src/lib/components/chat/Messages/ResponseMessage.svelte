@@ -105,6 +105,7 @@
 	}
 
 	const renderStyling = async () => {
+		console.log(message);
 		await tick();
 
 		if (tooltipInstance) {
