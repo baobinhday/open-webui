@@ -115,11 +115,15 @@
 
 		if (message.usage || message.info) {
 			let tooltipContent = '';
-			if (message.usage.openai) {
+			if (message.info.openai) {
+				tooltipContent = `prompt_tokens: ${message.info.prompt_tokens ?? 'N/A'}<br/>
+													completion_tokens: ${message.info.completion_tokens ?? 'N/A'}<br/>
+													total_tokens: ${message.info.total_tokens ?? 'N/A'}`;
+			} else if (message.usage) {
 				tooltipContent = `prompt_tokens: ${message.usage.prompt_tokens ?? 'N/A'}<br/>
 													completion_tokens: ${message.usage.completion_tokens ?? 'N/A'}<br/>
 													total_tokens: ${message.usage.total_tokens ?? 'N/A'}`;
-			} else {
+			}  else {
 				tooltipContent = `response_token/s: ${
 					`${
 						Math.round(
